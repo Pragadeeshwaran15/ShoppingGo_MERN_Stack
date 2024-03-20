@@ -5,7 +5,7 @@ import Search from './Search';
 import {useDispatch, useSelector} from 'react-redux';
 import { Dropdown, Image} from 'react-bootstrap';
 import { logout } from '../../actions/userActions';
-
+import avatars from '../../../public/images/default_avatar.png'
 
 export default function Header () {
     const { isAuthenticated, user } = useSelector(state => state.authState);
@@ -37,7 +37,7 @@ export default function Header () {
               <Dropdown className='d-inline' >
                   <Dropdown.Toggle variant='default text-white pr-5' id='dropdown-basic'>
                     <figure className='avatar avatar-nav'>
-                      <Image width="50px" src={user.avatar??'./images/default_avatar.png'}  className='profile_avatar'/>
+                      <Image width="50px" src={user.avatar ?? avatars}  className='profile_avatar'/>
                     </figure>
                     <span>{user.name}</span>
                   </Dropdown.Toggle>
