@@ -39,7 +39,7 @@ export default function Header () {
                     <figure className='avatar avatar-nav'>
                       <Image width="50px" src={user && user.avatar ? user.avatar : avatars}  className='profile_avatar'/>
                     </figure>
-                    <span>{user.name}</span>
+                    <span>{user && user.name?user.name:null}</span>
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
                   {user.role === 'seller' && <Dropdown.Item onClick={() => navigate('/seller/dashboard')} className='text-dark'>Dashboard</Dropdown.Item>}
