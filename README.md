@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+<h1 style:text-align:center>ShoppingGo(E-commerce site)</h1>
+ShoppingGo is an e-commerce website designed to provide users with a seamless online shopping experience. With a user-friendly interface and a wide range of products, ShoppingGo aims to cater to the diverse needs of customers.
+<a href='https://main-front-end-psi.vercel.app/'>Click here to see my website</a> <br>
+for Admin 
+email:'pragadeshm1@gmail.com'
+password:'123456'
+<h3>Features</h3>
+<ul>
+  
+  <li><b>User Authentication:</b> Users can sign up and log in to their accounts securely.</li>
+  <li><b>Product Browsing:</b> Browse through a vast collection of products conveniently categorized for easy navigation.</li>
+  <li><b>Search Functionality:</b> Search for specific products using keywords.</li>
+  <li><b>Filter Functionality</b> You can filter the Product based on 'Price' and 'Ratings'</li>
+  <li><b>Product Details:</b> View detailed information about each product, including price, description, and images.</li>
+  <li><b>Add to Cart:</b> Add products to your cart for easy purchasing.</li>
+  <li><b>Checkout Process:</b> Seamless checkout process with options for payment and shipping.</li>
+  <li><b>Order Tracking:</b> Track the status of your orders.</li>
+  <li><b>User Reviews:</b> Read and write reviews for products.</li>
+  <li><b>Admin Dashboard:</b> Admin panel to manage products, orders, and users.</li>
+  
+</ul>
+<h3>Technologies Used</h3>
+React.js: A popular JavaScript library for building user interfaces.
+Redux Toolkit: A powerful toolset for managing state in React applications.
+Stripe: A payment processing platform.
+Axios: A promise-based HTTP client for making requests.
+Bootstrap: A front-end framework for building responsive and mobile-first websites.
+React Bootstrap: React components for Bootstrap.
+MDB React: Material Design for Bootstrap - React components.
+React Router DOM: Declarative routing for React.
+React Helmet Async: A library for managing document head tags in React.
+React Toastify: A notification library for React.
+React Loader Spinner: A spinner component for React.
+RC Slider: A slider component for React.
+RC Tooltip: A tooltip component for React.
+Countries List: A list of countries and their details.
+Font Awesome: A popular icon library.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h2>Technology Stack</h2>
+<b>Frontend:</b> The frontend of the application is built using React.js, a popular JavaScript library for building user interfaces. Redux Toolkit is employed for state management, ensuring efficient handling of application data and interactions.
 
-## Available Scripts
+<b>UI Frameworks:</b> Bootstrap and MDB React provide a set of reusable components and styles, enabling rapid development and a cohesive design language throughout the application.
 
-In the project directory, you can run:
+<b>API Integration:</b> Axios is utilized for making HTTP requests to the backend API, enabling seamless communication between the frontend and backend systems.
 
-### `npm start`
+<b>Routing:</b> React Router DOM facilitates declarative routing within the application, allowing for navigation between different views and components.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<b>Authentication:</b> User authentication and session management are implemented using industry-standard practices, ensuring secure access to user accounts and sensitive information.
+<h3>Back end</h3>
+<a href='https://github.com/Pragadeeshwaran15/main_Back_end'>Click here</a>
