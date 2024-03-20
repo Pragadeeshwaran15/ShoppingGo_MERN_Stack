@@ -5,7 +5,7 @@ import Search from './Search';
 import {useDispatch, useSelector} from 'react-redux';
 import { Dropdown, Image} from 'react-bootstrap';
 import { logout } from '../../actions/userActions';
-import avatars from '../../../public/images/default_avatar.png'
+import avatars from '../../assets/default_avatar.png'
 
 export default function Header () {
     const { isAuthenticated, user } = useSelector(state => state.authState);
