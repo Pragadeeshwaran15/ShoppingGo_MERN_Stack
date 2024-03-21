@@ -32,7 +32,7 @@ export const deleteProduct  =  id => async (dispatch) => {
 
     try {  
         dispatch(deleteProductRequest()) 
-        await axios.delete(`/api/v1/seller/product/${id}`);
+        await axios.delete(`https://main-back-end.onrender.com/api/v1/seller/product/${id}`);
         dispatch(deleteProductSuccess())
     } catch (error) {
         //handle error
@@ -44,7 +44,7 @@ export const updateProduct  =  (id, productData) => async (dispatch) => {
 
     try {  
         dispatch(updateProductRequest()) 
-        const { data }  =  await axios.put(`/api/v1/seller/product/${id}`, productData);
+        const { data }  =  await axios.put(`https://main-back-end.onrender.com/api/v1/seller/product/${id}`, productData);
         dispatch(updateProductSuccess(data))
     } catch (error) {
         //handle error
@@ -55,7 +55,7 @@ export const updateProduct  =  (id, productData) => async (dispatch) => {
 export const adminOrders = async(dispatch) => {
     try {
        dispatch(adminOrdersRequest())
-       const {data} = await axios.get(`/api/v1/seller/orders`)
+       const {data} = await axios.get(`https://main-back-end.onrender.com/api/v1/seller/orders`)
        dispatch(adminOrdersSuccess(data))
     } catch (error) {
         dispatch(adminOrdersFail(error.response.data.message))
@@ -65,7 +65,7 @@ export const adminOrders = async(dispatch) => {
 export const deleteOrder = id => async(dispatch) => {
     try {
        dispatch(deleteOrderRequest())
-       await axios.delete(`/api/v1/seller/order/${id}`)
+       await axios.delete(`https://main-back-end.onrender.com/api/v1/seller/order/${id}`)
        dispatch(deleteOrderSuccess())
     } catch (error) {
        dispatch(deleteOrderFail(error.response.data.message))
@@ -75,7 +75,7 @@ export const deleteOrder = id => async(dispatch) => {
 export const updateOrder = (id, orderData)  => async(dispatch) => {
     try {
        dispatch(updateOrderRequest())
-       const { data} = await axios.put(`/api/v1/seller/order/${id}`, orderData)
+       const { data} = await axios.put(`https://main-back-end.onrender.com/api/v1/seller/order/${id}`, orderData)
        dispatch(updateOrderSuccess(data))
     } catch (error) {
        dispatch(updateOrderFail(error.response.data.message))

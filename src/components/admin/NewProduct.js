@@ -24,13 +24,7 @@ export  default function NewProduct () {
         'Laptops',
         'Accessories',
         'Headphones',
-        'Food',
-        'Books',
-        'Clothes/Shoes',
-        'Beauty/Health',
-        'Sports',
-        'Outdoor',
-        'Home'
+        'Sports'
     ];
 
     const navigate = useNavigate();

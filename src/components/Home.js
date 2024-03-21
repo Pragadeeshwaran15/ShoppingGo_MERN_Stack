@@ -8,7 +8,7 @@ import { Carousel } from 'react-bootstrap';
 import  {toast} from 'react-toastify';
 import Pagination from 'react-js-pagination';
 import { Link } from "react-router-dom";
-import axios from "axios";
+
 export  default function Home(){
     const dispatch = useDispatch();
     const {products, loading, error, productsCount, resPerPage} =    useSelector((state) => state.productsState)
@@ -20,16 +20,6 @@ export  default function Home(){
         setCurrentPage(pageNo)
        
     }
-    const getadimgae=async()=>{
-        try {
-            let res=await axios.get('/api/v1/ad/banner') 
-            if(res.status===200){
-                setImage(res.data.images)
-            }
-        } catch (error) {
-           console.log(error); 
-        }
-    }
     //catogery function
     const handleCategoryClick = (categoryName) => {
         // Set the selected category when a button is clicked
@@ -39,7 +29,7 @@ export  default function Home(){
     }
 
     useEffect(()=>{
-        getadimgae()
+        
         if(error) {
             return toast.error(error,{
                 position: toast.POSITION.BOTTOM_CENTER
