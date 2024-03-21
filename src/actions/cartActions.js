@@ -4,7 +4,11 @@ import axios from 'axios'
 export const addCartItem = (id, quantity) => async(dispatch) => {
     try {
         dispatch(addCartItemRequest())
-        const {data } = await axios.get(`https://main-back-end.onrender.com/api/v1/product/${id}`)
+        const {data } = await axios.get(`https://main-back-end.onrender.com/api/v1/product/${id}`,{
+            headers:{
+                authorization:localStorage.getItem('token')
+            }
+        })
         dispatch(addCartItemSuccess({
             product: data.product._id,
             name: data.product.name,

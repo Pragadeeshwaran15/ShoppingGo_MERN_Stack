@@ -10,7 +10,11 @@ try {
     e.preventDefault()
     const formData = new FormData(e.target);
     const formProps = Object.fromEntries(formData);
-    let res=await axios.post('https://main-back-end.onrender.com/api/v1/seller/register',formProps)
+    let res=await axios.post('https://main-back-end.onrender.com/api/v1/seller/register',formProps,{
+        headers:{
+            authorization:localStorage.getItem('token')
+        }
+    })
     if(res.status===200){
         navigate('/')
         toast.success("Registeration success check your email",{

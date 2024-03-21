@@ -11,7 +11,11 @@ function SellerRequest() {
   };
   const getSellerRequest = async () => {
     try {
-      let res = await axios.get("https://main-back-end.onrender.com/api/v1/seller/all");
+      let res = await axios.get("https://main-back-end.onrender.com/api/v1/seller/all",{
+        headers:{
+            authorization:localStorage.getItem('token')
+        }
+    });
 
       if (res.status === 200) {
         setData(res.data.sellers);

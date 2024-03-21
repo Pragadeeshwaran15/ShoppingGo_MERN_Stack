@@ -47,6 +47,7 @@ export const login = (email, password) => async (dispatch) => {
         try {
             dispatch(loginRequest())
             const { data }  = await axios.post(`https://main-back-end.onrender.com/api/v1/login`,{email,password});
+            localStorage.setItem('token',data.token)
             dispatch(loginSuccess(data))
         } catch (error) {
             dispatch(loginFail(error.response.data.message))
@@ -82,7 +83,14 @@ export const loadUser =  async (dispatch) => {
         dispatch(loadUserRequest())
        
 
-        const { data }  = await axios.get(`https://main-back-end.onrender.com/api/v1/myprofile`);
+        const { data }  = await axios.get(`https://main-back-end.onrender.com/api/v1/myprofile`,
+            {
+                headers:{
+                    authorization:localStorage.getItem('token')
+                }
+            }
+        );
+       
         dispatch(loadUserSuccess(data))
     } catch (error) {
         dispatch(loadUserFail(error.response.data.message))
@@ -94,6 +102,7 @@ export const logout =  async (dispatch) => {
 
     try {
         await axios.get(`https://main-back-end.onrender.com/api/v1/logout`);
+        localStorage.removeItem('token');
         dispatch(logoutSuccess())
     } catch (error) {
         dispatch(logoutFail)
@@ -107,6 +116,7 @@ export const updateProfile = (userData) => async (dispatch) => {
         dispatch(updateProfileRequest())
         const config = {
             headers: {
+                authorization: localStorage.getItem('token'),
                 'Content-type': 'multipart/form-data'
             }
         }
@@ -125,7 +135,7 @@ export const updatePassword = (formData) => async (dispatch) => {
         dispatch(updatePasswordRequest())
         const config = {
             headers: {
-                'Content-type': 'application/json'
+                authorization : localStorage.getItem('token')
             }
         }
         await axios.put(`https://main-back-end.onrender.com/api/v1/password/change`, formData, config);
@@ -142,7 +152,7 @@ export const forgotPassword = (formData) => async (dispatch) => {
         dispatch(forgotPasswordRequest())
         const config = {
             headers: {
-                'Content-type': 'application/json'
+                authorization : localStorage.getItem('token')
             }
         }
         const { data} =  await axios.post(`https://main-back-end.onrender.com/api/v1/password/forgot`, formData, config);
@@ -159,7 +169,7 @@ export const resetPassword = (formData, token) => async (dispatch) => {
         dispatch(resetPasswordRequest())
         const config = {
             headers: {
-                'Content-type': 'application/json'
+                authorization : localStorage.getItem('token')
             }
         }
         const { data} =  await axios.post(`https://main-back-end.onrender.com/api/v1/password/reset/${token}`, formData, config);
@@ -174,7 +184,11 @@ export const getUsers =  async (dispatch) => {
 
     try {
         dispatch(usersRequest())
-        const { data }  = await axios.get(`https://main-back-end.onrender.com/api/v1/admin/users`);
+        const { data }  = await axios.get(`https://main-back-end.onrender.com/api/v1/admin/users`,{
+            headers:{
+                authorization:localStorage.getItem('token')
+            }
+        });
         dispatch(usersSuccess(data))
     } catch (error) {
         dispatch(usersFail(error.response.data.message))
@@ -186,7 +200,11 @@ export const getUser = id => async (dispatch) => {
 
     try {
         dispatch(userRequest())
-        const { data }  = await axios.get(`https://main-back-end.onrender.com/api/v1/admin/user/${id}`);
+        const { data }  = await axios.get(`https://main-back-end.onrender.com/api/v1/admin/user/${id}`,{
+            headers:{
+                authorization:localStorage.getItem('token')
+            }
+        });
         dispatch(userSuccess(data))
     } catch (error) {
         dispatch(userFail(error.response.data.message))
@@ -198,7 +216,11 @@ export const deleteUser = id => async (dispatch) => {
 
     try {
         dispatch(deleteUserRequest())
-        await axios.delete(`https://main-back-end.onrender.com/api/v1/admin/user/${id}`);
+        await axios.delete(`https://main-back-end.onrender.com/api/v1/admin/user/${id}`,{
+            headers:{
+                authorization:localStorage.getItem('token')
+            }
+        });
         dispatch(deleteUserSuccess())
     } catch (error) {
         dispatch(deleteUserFail(error.response.data.message))
@@ -212,7 +234,7 @@ export const updateUser = (id, formData) => async (dispatch) => {
         dispatch(updateUserRequest())
         const config = {
             headers: {
-                'Content-type': 'application/json'
+                authorization : localStorage.getItem('token')
             }
         }
         await axios.put(`https://main-back-end.onrender.com/api/v1/admin/user/${id}`, formData, config);

@@ -7,7 +7,11 @@ export const getAdminProducts  =  async (dispatch) => {
 
     try {  
         dispatch(adminProductsRequest()) 
-        const { data }  =  await axios.get(`/api/v1/seller/products`);
+        const { data }  =  await axios.get(`https://main-back-end.onrender.com/api/v1/seller/products`,{
+            headers:{
+                authorization:localStorage.getItem('token')
+            }
+        });
         dispatch(adminProductsSuccess(data))
     } catch (error) {
         //handle error
@@ -20,7 +24,11 @@ export const createNewProduct  =  productData => async (dispatch) => {
 
     try {  
         dispatch(newProductRequest()) 
-        const { data }  =  await axios.post(`/api/v1/seller/product/new`, productData);
+        const { data }  =  await axios.post(`https://main-back-end.onrender.com/api/v1/seller/product/new`, productData,{
+            headers:{
+                authorization:localStorage.getItem('token')
+            }
+        });
         dispatch(newProductSuccess(data))
     } catch (error) {
         //handle error
@@ -32,7 +40,11 @@ export const deleteProduct  =  id => async (dispatch) => {
 
     try {  
         dispatch(deleteProductRequest()) 
-        await axios.delete(`https://main-back-end.onrender.com/api/v1/seller/product/${id}`);
+        await axios.delete(`https://main-back-end.onrender.com/api/v1/seller/product/${id}`,{
+            headers:{
+                authorization:localStorage.getItem('token')
+            }
+        });
         dispatch(deleteProductSuccess())
     } catch (error) {
         //handle error
@@ -44,7 +56,11 @@ export const updateProduct  =  (id, productData) => async (dispatch) => {
 
     try {  
         dispatch(updateProductRequest()) 
-        const { data }  =  await axios.put(`https://main-back-end.onrender.com/api/v1/seller/product/${id}`, productData);
+        const { data }  =  await axios.put(`https://main-back-end.onrender.com/api/v1/seller/product/${id}`, productData,{
+            headers:{
+                authorization:localStorage.getItem('token')
+            }
+        });
         dispatch(updateProductSuccess(data))
     } catch (error) {
         //handle error
@@ -55,7 +71,11 @@ export const updateProduct  =  (id, productData) => async (dispatch) => {
 export const adminOrders = async(dispatch) => {
     try {
        dispatch(adminOrdersRequest())
-       const {data} = await axios.get(`https://main-back-end.onrender.com/api/v1/seller/orders`)
+       const {data} = await axios.get(`https://main-back-end.onrender.com/api/v1/seller/orders`,{
+        headers:{
+            authorization:localStorage.getItem('token')
+        }
+    })
        dispatch(adminOrdersSuccess(data))
     } catch (error) {
         dispatch(adminOrdersFail(error.response.data.message))
@@ -65,7 +85,11 @@ export const adminOrders = async(dispatch) => {
 export const deleteOrder = id => async(dispatch) => {
     try {
        dispatch(deleteOrderRequest())
-       await axios.delete(`https://main-back-end.onrender.com/api/v1/seller/order/${id}`)
+       await axios.delete(`https://main-back-end.onrender.com/api/v1/seller/order/${id}`,{
+        headers:{
+            authorization:localStorage.getItem('token')
+        }
+    })
        dispatch(deleteOrderSuccess())
     } catch (error) {
        dispatch(deleteOrderFail(error.response.data.message))
@@ -75,7 +99,11 @@ export const deleteOrder = id => async(dispatch) => {
 export const updateOrder = (id, orderData)  => async(dispatch) => {
     try {
        dispatch(updateOrderRequest())
-       const { data} = await axios.put(`https://main-back-end.onrender.com/api/v1/seller/order/${id}`, orderData)
+       const { data} = await axios.put(`https://main-back-end.onrender.com/api/v1/seller/order/${id}`, orderData,{
+        headers:{
+            authorization:localStorage.getItem('token')
+        }
+    })
        dispatch(updateOrderSuccess(data))
     } catch (error) {
        dispatch(updateOrderFail(error.response.data.message))
