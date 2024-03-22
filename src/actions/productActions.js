@@ -22,6 +22,7 @@ export const getProducts = (keyword, price, category, rating, currentPage) => as
         }
         
         const { data }  =  await axios.get(link);
+        console.log(localStorage.getItem('token'));
         dispatch(productsSuccess(data))
     } catch (error) {
         //handle error

@@ -83,7 +83,7 @@ export const loadUser = () => async (dispatch) => {
         dispatch(loadUserRequest())
        
 
-        const { data }  = await axios.get(`https://main-back-end.onrender.com/api/v1/myprofile`,
+        const res  = await axios.get(`https://main-back-end.onrender.com/api/v1/myprofile`,
         
             {
                 headers:{
@@ -91,9 +91,12 @@ export const loadUser = () => async (dispatch) => {
                 }
             }
         );
-        console.log(data)
-        dispatch(loadUserSuccess(data))
+
+        if(res.status===200){
+        dispatch(loadUserSuccess(res.data.user))
+    }
     } catch (error) {
+        
         dispatch(loadUserFail(error.response.data.message))
     }
 
