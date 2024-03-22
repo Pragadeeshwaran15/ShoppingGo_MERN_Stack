@@ -77,7 +77,7 @@ export const register = (userData) => async (dispatch) => {
 
 }
 
-export const loadUser =  async (dispatch) => {
+export const loadUser = () => async (dispatch) => {
 
     try {
         dispatch(loadUserRequest())
