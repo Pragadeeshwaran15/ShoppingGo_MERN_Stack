@@ -84,13 +84,14 @@ export const loadUser = () => async (dispatch) => {
        
 
         const { data }  = await axios.get(`https://main-back-end.onrender.com/api/v1/myprofile`,
+        
             {
                 headers:{
                     authorization:localStorage.getItem('token')
                 }
             }
         );
-       
+        console.log(data)
         dispatch(loadUserSuccess(data))
     } catch (error) {
         dispatch(loadUserFail(error.response.data.message))

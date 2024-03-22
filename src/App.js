@@ -11,7 +11,7 @@ import ProductSearch from './components/product/ProductSearch';
 import Login from './components/user/Login';
 import Register from './components/user/Register';
 import { useEffect, useState } from 'react';
-
+import store from './store';
 import { loadUser } from './actions/userActions';
 import Profile from './components/user/Profile';
 import ProtectedRoute from './components/route/ProtectedRoute';
@@ -46,13 +46,11 @@ import SellerNewProduct from './components/seller/SellerNewProduct';
 import SellereDashBoard from './components/seller/SellereDashBoard';
 import SellerListProduct from './components/seller/SellerListProduct';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useDispatch } from 'react-redux';
 
 function App() {
   const [stripeApiKey, setStripeApiKey] = useState("")
-  let dispatch=useDispatch()
   useEffect(() => {
-    dispatch(loadUser())
+    store.dispatch(loadUser)
     async function getStripeApiKey(){
       const {data} = await axios.get('https://main-back-end.onrender.com/api/v1/stripeapi',{
         headers:{
