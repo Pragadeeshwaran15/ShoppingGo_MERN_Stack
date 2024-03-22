@@ -44,14 +44,14 @@ import axios from 'axios';
 
 export const login = (email, password) => async (dispatch) => {
 
-        try {
-            dispatch(loginRequest())
-            const { data }  = await axios.post(`https://main-back-end.onrender.com/api/v1/login`,{email,password});
-            localStorage.setItem('token',data.token)
-            dispatch(loginSuccess(data))
-        } catch (error) {
-            dispatch(loginFail(error.response.data.message))
-        }
+    try {
+        dispatch(loginRequest())
+        const { data }  = await axios.post(`https://main-back-end.onrender.com/api/v1/login`,{email,password});
+        localStorage.setItem('token',data.token)
+        dispatch(loginSuccess(data))
+    } catch (error) {
+        dispatch(loginFail(error.response.data.message))
+    }
 
 }
 

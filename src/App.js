@@ -50,7 +50,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   const [stripeApiKey, setStripeApiKey] = useState("")
   useEffect(() => {
-    store.dispatch(loadUser)
+    store.dispatch(loadUser())
     async function getStripeApiKey(){
       const {data} = await axios.get('https://main-back-end.onrender.com/api/v1/stripeapi',{
         headers:{
