@@ -74,7 +74,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
                         LOGIN
                         </button>
 
-                        <Link to="/register" className="float-right mt-3">New User?</Link>
+                        <Link to="/register" className="float-right mt-3">Create an account ..</Link>
                     </form>
                 </div>
             </div>
