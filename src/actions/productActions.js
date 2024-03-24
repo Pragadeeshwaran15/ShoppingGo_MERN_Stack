@@ -22,7 +22,6 @@ export const getProducts = (keyword, price, category, rating, currentPage) => as
         }
         
         const { data }  =  await axios.get(link);
-        console.log(localStorage.getItem('token'));
         dispatch(productsSuccess(data))
     } catch (error) {
         //handle error
@@ -71,6 +70,7 @@ export const getAdminProducts  =  async (dispatch) => {
 
     try {  
         dispatch(adminProductsRequest()) 
+        
         const { data }  =  await axios.get(`https://main-back-end.onrender.com/api/v1/admin/products`,{
             headers:{
                 authorization:localStorage.getItem('token')

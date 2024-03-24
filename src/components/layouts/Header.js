@@ -55,7 +55,7 @@ export default function Header () {
           }
           <Link to="/cart" className='cart'><span id="cart" className="ml-3">Cart <i class="fa-solid fa-cart-arrow-down"></i></span></Link>
           <span className="ml-1" id="cart_count">{cartItems.length}</span>
-          {isAuthenticated?<Link to="/seller/register" className='carts'><span id="carts" className="ml-3"><i class="fa-solid fa-store"></i></span></Link>:null}
+          {isAuthenticated && user.role !=='admin'?<Link to="/seller/register" className='carts'><span id="carts" className="ml-3"><i class="fa-solid fa-store"></i></span></Link>:null}
           
           
         </div>

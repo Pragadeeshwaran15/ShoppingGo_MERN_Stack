@@ -72,6 +72,7 @@ export default function ProductList() {
     }
 
     useEffect(() => {
+        
         if(error || productError) {
             toast(error || productError, {
                 position: toast.POSITION.BOTTOM_CENTER,
