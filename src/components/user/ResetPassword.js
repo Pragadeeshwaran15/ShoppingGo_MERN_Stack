@@ -1,79 +1,86 @@
-import { useEffect} from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { resetPassword, clearAuthError } from '../../actions/userActions';
-import {useNavigate, useParams} from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-export default function ResetPassword() {
-    
+const ResetPassword = () => {
     const dispatch = useDispatch();
-    const { isAuthenticated, error }  = useSelector(state => state.authState)
+    const { isAuthenticated, error } = useSelector(state => state.authState);
     const navigate = useNavigate();
     const { token } = useParams();
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
 
-    const submitHandler  = (e) => {
+    const handlePasswordChange = e => setPassword(e.target.value);
+    const handleConfirmPasswordChange = e => setConfirmPassword(e.target.value);
+
+    const handleSubmit = e => {
         e.preventDefault();
-        const formData = new FormData(e.target);
-      const formProps = Object.fromEntries(formData);
-        
-        dispatch(resetPassword(formProps, token))
-    }
-
-    useEffect(()=> {
-        if(isAuthenticated) {
-            toast('Password Reset Success!', {
-                type: 'success',
-                position: toast.POSITION.BOTTOM_CENTER
-            })
-            navigate('/')
+        if (password !== confirmPassword) {
+            toast.error('Passwords do not match');
             return;
         }
-        if(error)  {
-            toast(error, {
-                position: toast.POSITION.BOTTOM_CENTER,
-                type: 'error',
-                onOpen: ()=> { dispatch(clearAuthError) }
-            })
-            return
+        dispatch(resetPassword({ password, confirmPassword }, token));
+    };
+
+    useEffect(() => {
+        dispatch(clearAuthError());
+    }, [dispatch]);
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            toast.success('Password Reset Success!');
+            navigate('/');
         }
-    },[isAuthenticated, error, dispatch, navigate])
+    }, [isAuthenticated, navigate]);
+
+    useEffect(() => {
+        if (error) {
+            toast.error(error);
+        }
+    }, [error]);
 
     return (
         <div className="row wrapper mt-5">
             <div className="col-10 col-lg-5">
-                <form onSubmit={submitHandler} className="shadow-lg">
-                    <h1 className="mb-3">Forgot Password</h1>
-
+                <form onSubmit={handleSubmit} className="shadow-lg">
+                    <h1 className="mb-3">Reset Password</h1>
                     <div className="form-group">
-                        <label htmlFor="password_field"> New Password</label>
+                        <label htmlFor="password_field">New Password</label>
                         <input
                             type="password"
                             id="password_field"
                             className="form-control"
-                            name='password'
-                            
+                            name="password"
+                            value={password}
+                            onChange={handlePasswordChange}
+                            required
                         />
                     </div>
-
                     <div className="form-group">
                         <label htmlFor="confirm_password_field">Confirm Password</label>
                         <input
                             type="password"
                             id="confirm_password_field"
                             className="form-control"
-                            name='confirmPassword'
+                            name="confirmPassword"
+                            value={confirmPassword}
+                            onChange={handleConfirmPasswordChange}
+                            required
                         />
                     </div>
-
                     <button
-                        id="new_password_button"
+                        id="reset_password_button"
                         type="submit"
-                        className="btn btn-block py-3">
-                        Set Password
+                        className="btn btn-block py-3"
+                    >
+                        Reset Password
                     </button>
-
                 </form>
             </div>
         </div>
-    )
-}
+    );
+};
+
+export default ResetPassword;
