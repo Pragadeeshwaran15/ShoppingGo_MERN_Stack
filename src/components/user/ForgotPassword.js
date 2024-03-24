@@ -10,9 +10,10 @@ export default function ForgotPassword() {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        const formData = new FormData();
-        formData.append('email', email);
-        dispatch(forgotPassword(formData))
+        const formData = new FormData(e.target);
+      const formProps = Object.fromEntries(formData);
+      
+        dispatch(forgotPassword(formProps))
     }
 
     useEffect(()=>{
@@ -47,8 +48,7 @@ export default function ForgotPassword() {
                             type="email"
                             id="email_field"
                             className="form-control"
-                            value={email}
-                            onChange={e=>setEmail(e.target.value)}
+                            name="email"
                         />
                     </div>
 
