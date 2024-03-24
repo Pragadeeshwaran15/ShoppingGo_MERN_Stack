@@ -14,11 +14,10 @@ export default function ResetPassword() {
 
     const submitHandler  = (e) => {
         e.preventDefault();
-        const formData = new FormData();
-        formData.append('password', password);
-        formData.append('confirmPassword', confirmPassword);
+        const formData = new FormData(e.target);
+      const formProps = Object.fromEntries(formData);
         
-        dispatch(resetPassword(formData, token))
+        dispatch(resetPassword(formProps, token))
     }
 
     useEffect(()=> {
@@ -44,15 +43,15 @@ export default function ResetPassword() {
         <div className="row wrapper mt-5">
             <div className="col-10 col-lg-5">
                 <form onSubmit={submitHandler} className="shadow-lg">
-                    <h1 className="mb-3">New Password</h1>
+                    <h1 className="mb-3">Forgot Password</h1>
 
                     <div className="form-group">
-                        <label htmlFor="password_field">Password</label>
+                        <label htmlFor="password_field"> New Password</label>
                         <input
                             type="password"
                             id="password_field"
                             className="form-control"
-                            value={password}
+                            name='password'
                             onChange={e => setPassword(e.target.value)}
                         />
                     </div>
@@ -63,7 +62,7 @@ export default function ResetPassword() {
                             type="password"
                             id="confirm_password_field"
                             className="form-control"
-                            value={confirmPassword}
+                            name='confirmPassword'
                             onChange={e => setConfirmPassword(e.target.value)}
                         />
                     </div>
