@@ -1,12 +1,11 @@
-import { useEffect, useState} from 'react';
+import { useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { resetPassword, clearAuthError } from '../../actions/userActions';
 import {useNavigate, useParams} from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 export default function ResetPassword() {
-    const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
+    
     const dispatch = useDispatch();
     const { isAuthenticated, error }  = useSelector(state => state.authState)
     const navigate = useNavigate();
@@ -52,7 +51,7 @@ export default function ResetPassword() {
                             id="password_field"
                             className="form-control"
                             name='password'
-                            onChange={e => setPassword(e.target.value)}
+                            
                         />
                     </div>
 
@@ -63,7 +62,6 @@ export default function ResetPassword() {
                             id="confirm_password_field"
                             className="form-control"
                             name='confirmPassword'
-                            onChange={e => setConfirmPassword(e.target.value)}
                         />
                     </div>
 
