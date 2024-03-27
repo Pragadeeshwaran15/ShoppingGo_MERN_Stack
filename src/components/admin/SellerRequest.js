@@ -6,7 +6,7 @@ import axios from "axios";
 function SellerRequest() {
   let [data, setData] = useState();
   const handleDelete = async (id) => {
-    let res = await axios.delete(`/api/v1/seller/delete/${id}`);
+    let res = await axios.delete(`https://main-back-end.onrender.com/api/v1/seller/delete/${id}`);
     getSellerRequest();
   };
   const getSellerRequest = async () => {
@@ -26,7 +26,7 @@ function SellerRequest() {
     try {
       const updatedSeller = { ...e, status: !e.status };
       let res = await axios.put(
-        `/api/v1/seller/verified/${e._id}`,
+        `https://main-back-end.onrender.com/api/v1/seller/verified/${e._id}`,
         updatedSeller
       );
 
