@@ -1,21 +1,21 @@
-import {useEffect, useState } from 'react';
+import {useEffect} from 'react';
 import { updatePassword as updatePasswordAction, clearAuthError } from '../../actions/userActions';
 import {useDispatch, useSelector} from 'react-redux';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 export default function UpdatePassword() {
-    
-    const [password, setPassword] = useState("");
-    const [oldPassword, setOldPassword] = useState("");
+    let navigate=useNavigate()
+
     const dispatch = useDispatch();
     const { isUpdated, error } = useSelector(state => state.authState)
 
     const submitHandler = (e) => {
         e.preventDefault();
-        const formData = new FormData();
-        formData.append('oldPassword', oldPassword);
-        formData.append('password', password);
-        dispatch(updatePasswordAction(formData))
+        const formData = new FormData(e.target);
+        const formProps = Object.fromEntries(formData);
+       
+        dispatch(updatePasswordAction(formProps))
     }
 
     useEffect(() => {
@@ -24,8 +24,7 @@ export default function UpdatePassword() {
                 type: 'success',
                 position: toast.POSITION.BOTTOM_CENTER
             })
-            setOldPassword("");
-            setPassword("")
+            navigate('/myprofile')
             return;
         }
         if(error)  {
@@ -36,7 +35,7 @@ export default function UpdatePassword() {
             })
             return
         }
-    },[isUpdated, error, dispatch])
+    },[isUpdated, error, dispatch,navigate])
 
     return (
         <div className="row wrapper mt-5">
@@ -49,8 +48,7 @@ export default function UpdatePassword() {
                             type="password"
                             id="old_password_field"
                             className="form-control"
-                            value={oldPassword}
-                            onChange={e=>setOldPassword(e.target.value)}
+                            name='oldPassword'
                         />
                     </div>
 
@@ -60,8 +58,7 @@ export default function UpdatePassword() {
                             type="password"
                             id="new_password_field"
                             className="form-control"
-                            value={password}
-                            onChange={e=>setPassword(e.target.value)}
+                            name='password'
                         />
                     </div>
 
