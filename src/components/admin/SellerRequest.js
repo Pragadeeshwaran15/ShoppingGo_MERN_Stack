@@ -6,7 +6,11 @@ import axios from "axios";
 function SellerRequest() {
   let [data, setData] = useState();
   const handleDelete = async (id) => {
-    let res = await axios.delete(`https://main-back-end.onrender.com/api/v1/seller/delete/${id}`);
+    let res = await axios.delete(`https://main-back-end.onrender.com/api/v1/seller/delete/${id}`,{
+      headers:{
+          authorization:localStorage.getItem('token')
+      }
+  });
     getSellerRequest();
   };
   const getSellerRequest = async () => {
@@ -27,7 +31,11 @@ function SellerRequest() {
       const updatedSeller = { ...e, status: !e.status };
       let res = await axios.put(
         `https://main-back-end.onrender.com/api/v1/seller/verified/${e._id}`,
-        updatedSeller
+        updatedSeller,{
+          headers:{
+              authorization:localStorage.getItem('token')
+          }
+      }
       );
 
       if (res.status === 200) {
