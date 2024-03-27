@@ -119,7 +119,7 @@ export default function Payment() {
 
 
      return (
-        <div className="row wrapper">
+        <div className="row wrappe mt-5">
             <div className="col-10 col-lg-5">
                 <form onSubmit={submitHandler} className="shadow-lg">
                     <h1 className="mb-4">Card Info</h1>
